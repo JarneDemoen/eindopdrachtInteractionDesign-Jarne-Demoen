@@ -196,6 +196,13 @@ a:focus {
   align-items: center;
 }
 /* Sidebar css */
+.bg-sidenav{
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    left: 0;
+    background-color: lightskyblue;
+}
 .sidenav {
   height: 100%;
   width: 200px;
