@@ -189,15 +189,28 @@ a:focus {
 
 .c-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
+.c-title {
+  margin-right: auto;
+  margin-left: auto;
+  color: white;
+}
 .c-logo {
   height: 48px;
   display: flex;
   align-items: center;
 }
+.c-logo__symbol {
+  height: 100%;
+}
+.c-header__logo{
+    width: 50px;
+    margin-left: 16px;
+    fill: white;
+}
+
 /* Sidebar css */
 .bg-sidenav {
   height: 100%;
@@ -229,7 +242,7 @@ a:focus {
   color: var(--blue-accent-color);
   display: block;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   background: none;
   width: 100%;
   text-align: left;
@@ -238,7 +251,8 @@ a:focus {
 }
 
 .sidenav a:hover,
-.dropdown-Country:hover,.active {
+.dropdown-Country:hover,
+.active {
   color: white;
   background-color: var(--blue-accent-color);
 }
