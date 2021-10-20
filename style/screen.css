@@ -30,15 +30,18 @@
     Global page styles + universal box-sizing:
 */
 
+:root {
+  --blue-accent-color: #1f79ff;
+  --white-accent-color: #f1f2f6;
+}
 html {
   font-size: 16px;
   line-height: 1.5;
   font-family: Helvetica, arial, sans-serif;
-  color: black;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f1f2f6;
+  background-color: var(--white-accent-color);
 }
 
 *,
@@ -55,7 +58,7 @@ html {
  */
 
 ::selection {
-  background: #3385ff;
+  background: var(--blue-accent-color);
   color: white;
   text-shadow: none;
 }
@@ -160,18 +163,18 @@ hr {
 }
 
 a {
-  color: #3385ff;
+  color: var(--blue-accent-color);
   transition: all 0.1s ease-in-out;
 }
 
 a:visited,
 a:active {
-  color: #4f95ff;
+  color: #1c75fa;
 }
 
 a:hover,
 a:focus {
-  color: #4f95ff;
+  color: #77aeff;
 }
 
 /* Header css */
@@ -181,7 +184,7 @@ a:focus {
 }
 
 .o-section-blue {
-  background-color: lightskyblue;
+  background-color: var(--blue-accent-color);
 }
 
 .c-header {
@@ -196,22 +199,23 @@ a:focus {
   align-items: center;
 }
 /* Sidebar css */
-.bg-sidenav{
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    left: 0;
-    background-color: lightskyblue;
+.bg-sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  left: 0;
+  background-color: var(--blue-accent-color);
 }
 .sidenav {
   height: 100%;
-  width: 200px;
+  width: 220px;
   position: fixed;
   z-index: 1;
   left: 0;
   background-color: white;
   overflow-x: hidden;
   padding-top: 20px;
+  padding-right: 32px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   border-radius: 30px 0px 0px 0px;
 }
@@ -219,11 +223,13 @@ a:focus {
 .sidenav a,
 .dropdown-Country {
   padding: 6px 8px 6px 16px;
+  margin: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 20px;
-  color: #818181;
+  font-size: 16px;
+  color: var(--blue-accent-color);
   display: block;
   border: none;
+  border-radius: 5px;
   background: none;
   width: 100%;
   text-align: left;
@@ -232,24 +238,19 @@ a:focus {
 }
 
 .sidenav a:hover,
-.dropdown-Country:hover {
-  color: #f1f1f1;
+.dropdown-Country:hover,.active {
+  color: white;
+  background-color: var(--blue-accent-color);
 }
 
 .main {
   margin-left: 200px;
   font-size: 20px;
-  padding: 0px 10px;
-}
-
-.active {
-  background-color: green;
-  color: white;
+  padding: 16px 32px;
 }
 
 .dropdown-container {
   display: none;
-  background-color: #262626;
   padding-left: 8px;
 }
 
