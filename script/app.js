@@ -19,16 +19,29 @@ function dropdownContent() {
 }
 
 function filterDataEurope(jsonObject) {
-    console.log(jsonObject)
+    let filteredDataArray = []
+    for (let i = 0; i < jsonObject.length; i++) {
+        for (let j = 0; j < jsonObject[i].parks.length; j++) {
+            let myCountries = ['Belgium', 'France', 'Netherlands', 'Germany'];
+            for (let index in myCountries) {
+                if (myCountries[index] == jsonObject[i].parks[j].country) { // console.log(jsonObject[i].parks[j].name);
+                    let park = jsonObject[i].parks[j]
+                    filteredDataArray.push(park)
+                }
+            }
+            // console.log(jsonObject[i].parks[j].name) alle parken
+        }
+    }
+    console.log(filteredDataArray)
 }
 
-let getData = async () => {
+let getData = async () => { // const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks.json`;
     const ENDPOINT = `https://queue-times.com/nl/parks.json`;
 
     // Met de fetch API proberen we de data op te halen.
-    const request = await fetch(`${ENDPOINT}`);
+    const request = await fetch(`${ENDPOINT}`, {dataType: 'jsonp'});
     const data = await request.json();
-    console.log("getAPI data", data);
+    filterDataEurope(data)
 }
 
 function init() {
