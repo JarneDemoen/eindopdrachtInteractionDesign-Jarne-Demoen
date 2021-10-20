@@ -24,29 +24,25 @@ function fillData(data) {
     console.log("lenge data", data.length)
     let htmlsidenavcountry = document.querySelector('.sidenav')
     htmlsidenavcountry.innerHTML = ``
+    let sidenavcountrystring = ``
     for (let i = 0; i < myCountries.length; i++) {
         let country = myCountries[i]
-        console.log('Vullen van land: ', country)
-        htmlsidenavcountry.innerHTML += `<button class="dropdown-Country">${country}
+        sidenavcountrystring += `<button class="dropdown-Country">${country}
         <i class="fa fa-caret-down">&#9660</i>
-      </button><div class="dropdown-container">`
-        console.log('innerhtml', htmlsidenavcountry.innerHTML)
+      </button>`;
+        sidenavcountrystring += `<div class="dropdown-container">`;
         for (let j = 0; j < data.length; j++) {
             let parkobj = data[j]
-            console.log('Wordt onderzocht: ', parkobj)
-            console.log('innerhtml', htmlsidenavcountry.innerHTML)
             if (parkobj.country == country) {
-                htmlsidenavcountry.innerHTML += `<a href="#">${
+                sidenavcountrystring += `<a href="#">${
                     parkobj.name
                 }</a>`
-                console.log('Hoort bij land')
-                console.log('innerhtml', htmlsidenavcountry.innerHTML)
             }
-            console.log('innerhtml', htmlsidenavcountry.innerHTML)
         }
-        htmlsidenavcountry.innerHTML += '</div>';
-        console.log('innerhtml', htmlsidenavcountry.innerHTML)
+        sidenavcountrystring += '</div>';
     }
+    htmlsidenavcountry.innerHTML = sidenavcountrystring;
+    dropdownContent();
 }
 
 function filterDataEurope(jsonObject) {
@@ -77,7 +73,6 @@ let getData = async () => { // const ENDPOINT = `https://cors-anywhere.herokuapp
 
 function init() {
     console.log('DOM Geladen');
-    dropdownContent();
     getData();
 }
 
