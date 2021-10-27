@@ -24,9 +24,6 @@
   font-weight: 300;
 }
 
-
-
-
 :root {
   --blue-accent-color: #1f79ff;
   --white-accent-color: #f1f2f6;
@@ -175,6 +172,17 @@ a:focus {
   color: #77aeff;
 }
 
+.c-menu {
+  display: none;
+}
+
+.menu__symbol {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  background-color: var(--blue-accent-color);
+}
+
 .c-logo {
   display: flex;
   background-color: var(--blue-accent-color);
@@ -203,9 +211,9 @@ a:focus {
   background-color: var(--white-accent-color);
   padding-left: 16px;
 }
+
 .sidenavigation {
   grid-area: sidebar;
-  background-color: yellow;
 }
 
 .container {
@@ -237,6 +245,7 @@ a:focus {
   padding-right: 32px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   border-radius: 30px 0px 0px 0px;
+  transition: 0.3s;
 }
 
 .sidenav a,
@@ -274,7 +283,7 @@ a:focus {
   padding-right: 8px;
 }
 
-.ride{
+.ride {
   width: 80%;
   height: 120px;
   padding-right: 16px;
@@ -282,4 +291,29 @@ a:focus {
   margin-right: auto;
   border-radius: 20px;
   background-color: white;
+}
+
+@media (max-width: 500px) {
+  .sidenavigation {
+    display: none;
+    grid-area: sidebar;
+  }
+  .container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'menu header'
+      'sidebar main';
+  }
+  .c-menu {
+    display: flex;
+    background-color: var(--blue-accent-color);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .c-logo {
+    display: none;
+  }
 }
