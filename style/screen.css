@@ -1,3 +1,32 @@
+@font-face {
+  font-family: 'Nunito';
+  src: url(/fonts/Nunito-Bold.ttf);
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url(/fonts/Nunito-SemiBold.ttf);
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url(/fonts/Nunito-Medium.ttf);
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url(/fonts/Nunito-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Nunito';
+  src: url(/fonts/Nunito-Light.ttf);
+  font-weight: 300;
+}
+
+
+
+
 :root {
   --blue-accent-color: #1f79ff;
   --white-accent-color: #f1f2f6;
@@ -6,7 +35,7 @@
 html {
   font-size: 16px;
   line-height: 1.5;
-  font-family: Helvetica, arial, sans-serif;
+  font-family: 'Nunito', arial, sans-serif;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
