@@ -27,6 +27,9 @@ function fillData(data) {
     let sidenavcountrystring = ``
     for (let i = 0; i < myCountries.length; i++) {
         let country = myCountries[i]
+        if (country == 'Netherlands'){
+            country = 'The Netherlands'
+        }
         sidenavcountrystring += `<button class="dropdown-Country">${country}
         <i class="fa fa-caret-down">&#9660</i>
       </button>`;
@@ -63,8 +66,8 @@ function filterDataEurope(jsonObject) {
 }
 
 let getData = async () => { 
-    const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks.json`;
-    // const ENDPOINT = `https://queue-times.com/nl/parks.json`;
+    // const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks.json`;
+    const ENDPOINT = `https://queue-times.com/nl/parks.json`;
 
     // Met de fetch API proberen we de data op te halen.
     const request = await fetch(`${ENDPOINT}`, {dataType: 'jsonp'});
