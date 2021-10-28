@@ -23,7 +23,7 @@ function displayNone1(){
 
 function ListenToClickMenu(btn) {
     btn.addEventListener('click', function () {
-        maincontent = document.querySelector('.ride')
+        maincontent = document.querySelector('.content')
         if (sidebar.style.display == 'block') {
             maincontent.style.opacity = '100%'
             menubtn.style.animation = 'fadein 0.3s'
@@ -56,7 +56,7 @@ function dropdownContent() {
                 dropdownContent.style.display = "none";
             } else {
                 dropdownContent.style.display = "block";
-                dropdownContent.style.animation = "fadein 0.5s";
+                dropdownContent.style.animation = "fadein 0.6s";
                 console.log('Animatie uitlappen')
             }
         });
