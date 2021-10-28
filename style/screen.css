@@ -359,6 +359,7 @@ a:focus {
 .ridename {
   grid-area: ridename;
   font-weight: 800;
+  font-size: 20px;
   color: var(--blue-accent-color);
 }
 
