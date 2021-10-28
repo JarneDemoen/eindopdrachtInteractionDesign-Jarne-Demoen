@@ -285,10 +285,6 @@ a:focus {
   font-family: 'Nunito';
 }
 
-.sidenav a {
-  transition: 0.2s;
-}
-
 .sidenav a:hover,
 .dropdown-Country:hover,
 .active {

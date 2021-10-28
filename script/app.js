@@ -52,9 +52,12 @@ function dropdownContent() {
             this.classList.toggle("active");
             var dropdownContent = this.nextElementSibling;
             if (dropdownContent.style.display === "block") {
+                console.log('Animatie inklappen')
                 dropdownContent.style.display = "none";
             } else {
                 dropdownContent.style.display = "block";
+                dropdownContent.style.animation = "fadein 0.5s";
+                console.log('Animatie uitlappen')
             }
         });
     }
@@ -97,7 +100,7 @@ function fillData(data) {
         for (let j = 0; j < data.length; j++) {
             let parkobj = data[j]
             if (parkobj.country == country) {
-                sidenavcountrystring += `<a href="#">${
+                sidenavcountrystring += `<a class="c-park" href="#">${
                     parkobj.name
                 }</a>`
             }
@@ -126,8 +129,8 @@ function filterDataEurope(jsonObject) {
 }
 
 let getData = async () => { 
-    const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks.json`;
-    // const ENDPOINT = `https://queue-times.com/nl/parks.json`;
+    // const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks.json`;
+    const ENDPOINT = `https://queue-times.com/nl/parks.json`;
 
     // Met de fetch API proberen we de data op te halen.
     const request = await fetch(`${ENDPOINT}`, {dataType: 'jsonp'});
