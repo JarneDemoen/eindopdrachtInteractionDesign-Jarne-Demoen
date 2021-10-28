@@ -178,6 +178,10 @@ a:focus {
   display: none;
 }
 
+.menu__symbol{
+  display: block;
+}
+
 .cancel-menu__symbol {
   display: none;
 }
@@ -346,6 +350,8 @@ a:focus {
 
 .ridename {
   grid-area: ridename;
+  font-weight: 800;
+  color: var(--blue-accent-color);
 }
 
 .ridestatus {
@@ -354,6 +360,35 @@ a:focus {
 
 .ridewait {
   grid-area: wait;
+}
+
+.icon {
+  width: 25px;
+  fill: rgba(61, 33, 33, 0.3);
+  margin-right: 5px;
+}
+
+.icontext {
+  padding-bottom: 4px;
+}
+
+.icon,
+.icontext {
+  vertical-align: middle;
+  display: inline-block;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.like__symbol {
+  width: 25px;
+  fill: rgba(61, 33, 33, 0.3);
+}
+
+.like {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Animations */
@@ -417,7 +452,7 @@ a:focus {
     display: none;
   }
 
-  .content{
-    margin-left: 0px
+  .content {
+    margin-left: 0px;
   }
 }

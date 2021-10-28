@@ -12,6 +12,27 @@ let sidebarcontent;
 let sidebarbg;
 let logo;
 
+let getDataAttracties = async (pretparkId) => {
+    // const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks/${pretparkId}/queue_times.json`;
+    const ENDPOINT = `https://queue-times.com/nl/parks/${pretparkId}/queue_times.json`;
+
+    // Met de fetch API proberen we de data op te halen.
+    const request = await fetch(`${ENDPOINT}`, {dataType: 'jsonp'});
+    const data = await request.json();
+    console.log('Data: ',data)
+}
+
+function ListenToClickPretpark(){
+    const pretparken = document.querySelectorAll('.c-park')
+    for(let pretparkbtn of pretparken){
+        pretparkbtn.addEventListener('click',function(){
+            let pretparkId = pretparkbtn.getAttribute('parkid')
+            console.log('Gekozen pretpark is: ',pretparkId)
+            getDataAttracties(pretparkId)
+        })
+    }
+}
+
 function displayNone(){
     cancelMenu.style.display = 'none'
     sidebar.style.display = 'none'
@@ -71,12 +92,10 @@ function dropdownContent() {
         ListenToClickMenu(menubtn);
     }
 
-    if (!menubtn) {
-        ListenToClickMenu(menubtn);
-    }
     if(cancelMenu){
         ListenToClickMenu(cancelMenu);
     }
+    ListenToClickPretpark();
 }
 
 function fillData(data) {
@@ -100,7 +119,7 @@ function fillData(data) {
         for (let j = 0; j < data.length; j++) {
             let parkobj = data[j]
             if (parkobj.country == country) {
-                sidenavcountrystring += `<a class="c-park" href="#">${
+                sidenavcountrystring += `<a class="c-park" parkid=${parkobj.id} href="#">${
                     parkobj.name
                 }</a>`
             }
@@ -128,7 +147,7 @@ function filterDataEurope(jsonObject) {
     fillData(filteredDataArray);
 }
 
-let getData = async () => { 
+let getDataPretparken = async () => { 
     // const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks.json`;
     const ENDPOINT = `https://queue-times.com/nl/parks.json`;
 
@@ -140,7 +159,7 @@ let getData = async () => {
 
 function init() {
     console.log('DOM Geladen');
-    getData();
+    getDataPretparken();
 }
 
 document.addEventListener('DOMContentLoaded', init);
