@@ -184,6 +184,7 @@ a:focus {
 
 .menu__symbol,
 .cancel-menu__symbol {
+  position: absolute;
   width: 24px;
   height: 24px;
   fill: white;
@@ -334,20 +335,20 @@ a:focus {
   }
 }
 
-@keyframes fadein{
-  from{
+@keyframes fadein {
+  from {
     opacity: 0;
   }
-  to{
+  to {
     opacity: 1;
   }
 }
 
-@keyframes fadeout{
-  from{
+@keyframes fadeout {
+  from {
     opacity: 1;
   }
-  to{
+  to {
     opacity: 0;
   }
 }

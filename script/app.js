@@ -10,11 +10,15 @@ let maincontent;
 let cancelMenu;
 let sidebarcontent;
 let sidebarbg;
+let logo;
 
 function displayNone(){
-    sidebar.style.display = 'none'
     cancelMenu.style.display = 'none'
-    menubtn.style.display = 'block'
+    sidebar.style.display = 'none'
+}
+
+function displayNone1(){
+    menubtn.style.display = 'none'
 }
 
 function ListenToClickMenu(btn) {
@@ -22,17 +26,22 @@ function ListenToClickMenu(btn) {
         maincontent = document.querySelector('.ride')
         if (sidebar.style.display == 'block') {
             maincontent.style.opacity = '100%'
-            sidebarcontent.style.animation = 'slideout 0.5s'
-            sidebarbg.style.animation = 'slideout 0.5s'
-            setTimeout(displayNone,500)
+            menubtn.style.animation = 'fadein 0.3s'
+            cancelMenu.style.animation = 'fadeout 0.3s'
+            menubtn.style.display = 'block'
+            setTimeout(displayNone,300)
+            sidebarcontent.style.animation = 'slideout 0.3s'
+            sidebarbg.style.animation = 'slideout 0.3s'
             
         } else {
             sidebar.style.display = 'block'
             maincontent.style.opacity = '30%'
-            menubtn.style.display = 'none'
+            menubtn.style.animation = 'fadeout 0.3s'
+            cancelMenu.style.animation = 'fadein 0.3s'
             cancelMenu.style.display = 'block'
-            sidebarcontent.style.animation = 'slidein 0.5s'
-            sidebarbg.style.animation = 'slidein 0.5s'
+            setTimeout(displayNone1,300)
+            sidebarcontent.style.animation = 'slidein 0.3s'
+            sidebarbg.style.animation = 'slidein 0.3s'
         }
     })
 }
@@ -53,7 +62,13 @@ function dropdownContent() {
     sidebar = document.querySelector('.sidenavigation')
     sidebarcontent = document.querySelector('.sidenav')
     sidebarbg = document.querySelector('.bg-sidenav')
+    menubtn = document.querySelector('.menu__symbol')
+
     if (menubtn) {
+        ListenToClickMenu(menubtn);
+    }
+
+    if (!menubtn) {
         ListenToClickMenu(menubtn);
     }
     if(cancelMenu){
@@ -110,8 +125,9 @@ function filterDataEurope(jsonObject) {
     fillData(filteredDataArray);
 }
 
-let getData = async () => { // const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks.json`;
-    const ENDPOINT = `https://queue-times.com/nl/parks.json`;
+let getData = async () => { 
+    const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks.json`;
+    // const ENDPOINT = `https://queue-times.com/nl/parks.json`;
 
     // Met de fetch API proberen we de data op te halen.
     const request = await fetch(`${ENDPOINT}`, {dataType: 'jsonp'});
@@ -121,8 +137,6 @@ let getData = async () => { // const ENDPOINT = `https://cors-anywhere.herokuapp
 
 function init() {
     console.log('DOM Geladen');
-    menubtn = document.querySelector('.menu__symbol');
-    console.log('MENUBTN', menubtn)
     getData();
 }
 
