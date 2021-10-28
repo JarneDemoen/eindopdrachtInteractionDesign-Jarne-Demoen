@@ -28,7 +28,10 @@
   --blue-accent-color: #1f79ff;
   --white-accent-color: #f1f2f6;
   --header-height: 70px;
+  --header-font-size: 22px;
+  --header-line-height: 70px;
 }
+
 html {
   font-size: 16px;
   line-height: 1.5;
@@ -159,7 +162,6 @@ hr {
 
 a {
   color: var(--blue-accent-color);
-  transition: all 0.1s ease-in-out;
 }
 
 a:visited,
@@ -176,7 +178,12 @@ a:focus {
   display: none;
 }
 
-.menu__symbol {
+.cancel-menu__symbol {
+  display: none;
+}
+
+.menu__symbol,
+.cancel-menu__symbol {
   width: 24px;
   height: 24px;
   fill: white;
@@ -212,10 +219,6 @@ a:focus {
   padding-left: 16px;
 }
 
-.sidenavigation {
-  grid-area: sidebar;
-}
-
 .container {
   display: grid;
   grid-template-columns: 220px auto;
@@ -232,8 +235,12 @@ a:focus {
   position: fixed;
   left: 0;
   background-color: var(--blue-accent-color);
+  /* animation: slidein 0.5s; */
 }
+
 .sidenav {
+  display: block;
+  grid-area: sidebar;
   height: 100%;
   width: 220px;
   position: fixed;
@@ -245,7 +252,18 @@ a:focus {
   padding-right: 32px;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   border-radius: 30px 0px 0px 0px;
-  transition: 0.3s;
+  /* animation: slidein 0.5s; */
+}
+
+.sidenav header {
+  font-size: var(--header-font-size);
+  line-height: var(--header-line-height);
+  color: var(--blue-accent-color);
+  font-weight: 600;
+  margin-left: 32px;
+  user-select: none;
+  border-bottom: 2px solid var(--blue-accent-color);
+  margin-bottom: 32px;
 }
 
 .sidenav a,
@@ -264,6 +282,10 @@ a:focus {
   cursor: pointer;
   outline: none;
   font-family: 'Nunito';
+}
+
+.sidenav a {
+  transition: 0.2s;
 }
 
 .sidenav a:hover,
@@ -291,6 +313,43 @@ a:focus {
   margin-right: auto;
   border-radius: 20px;
   background-color: white;
+}
+
+/* Animations */
+@keyframes slidein {
+  from {
+    left: -250px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes slideout {
+  from {
+    left: 0px;
+  }
+  to {
+    left: -250px;
+  }
+}
+
+@keyframes fadein{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout{
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
 }
 
 @media (max-width: 500px) {

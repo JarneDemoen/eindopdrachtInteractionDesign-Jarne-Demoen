@@ -7,17 +7,32 @@ let myCountries = ['Belgium', 'France', 'Netherlands', 'Germany'];
 let menubtn;
 let sidebar;
 let maincontent;
+let cancelMenu;
+let sidebarcontent;
+let sidebarbg;
 
-function ListenToClickMenu() {
-    menubtn.addEventListener('click', function () {
-        sidebar = document.querySelector('.sidenavigation')
+function displayNone(){
+    sidebar.style.display = 'none'
+    cancelMenu.style.display = 'none'
+    menubtn.style.display = 'block'
+}
+
+function ListenToClickMenu(btn) {
+    btn.addEventListener('click', function () {
         maincontent = document.querySelector('.ride')
         if (sidebar.style.display == 'block') {
-            sidebar.style.display = 'none'
             maincontent.style.opacity = '100%'
+            sidebarcontent.style.animation = 'slideout 0.5s'
+            sidebarbg.style.animation = 'slideout 0.5s'
+            setTimeout(displayNone,500)
+            
         } else {
             sidebar.style.display = 'block'
             maincontent.style.opacity = '30%'
+            menubtn.style.display = 'none'
+            cancelMenu.style.display = 'block'
+            sidebarcontent.style.animation = 'slidein 0.5s'
+            sidebarbg.style.animation = 'slidein 0.5s'
         }
     })
 }
@@ -34,9 +49,15 @@ function dropdownContent() {
             }
         });
     }
-
+    cancelMenu = document.querySelector('.cancel-menu__symbol')
+    sidebar = document.querySelector('.sidenavigation')
+    sidebarcontent = document.querySelector('.sidenav')
+    sidebarbg = document.querySelector('.bg-sidenav')
     if (menubtn) {
-        ListenToClickMenu();
+        ListenToClickMenu(menubtn);
+    }
+    if(cancelMenu){
+        ListenToClickMenu(cancelMenu);
     }
 }
 
@@ -45,7 +66,7 @@ function fillData(data) {
     console.log("lenge data", data.length)
     let htmlsidenavcountry = document.querySelector('.sidenav')
     htmlsidenavcountry.innerHTML = ``
-    let sidenavcountrystring = ``
+    let sidenavcountrystring = `<Header>Parks</Header>`
     for (let i = 0; i < myCountries.length; i++) {
         let country = myCountries[i]
         if (country == 'Netherlands') {
