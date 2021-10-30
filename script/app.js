@@ -33,7 +33,7 @@ function fillContentPage(jsonObject,pretparkname){
     if (jsonObject.lands.length == 0){
         console.log('Er zijn geen gebieden')
         for (let attractie of jsonObject.rides){
-            let imgSource = `/img/${pretparkname}/${modifyName(attractie.name)}.jpg`
+            let imgSource = `/img/${pretparkname}/${modifyName(attractie.name)}.JPG`
             console.log('imgString: ',imgSource)
             contentString += `<div class="ride">
             <div class="rideimage">
