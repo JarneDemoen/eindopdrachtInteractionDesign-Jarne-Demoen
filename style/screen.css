@@ -30,6 +30,7 @@
   --header-height: 70px;
   --header-font-size: 22px;
   --header-line-height: 70px;
+  --gold: goldenrod;
 }
 
 html {
@@ -318,6 +319,24 @@ a:focus {
   cursor: pointer;
   outline: none;
   font-family: 'Nunito';
+}
+
+.favorites{
+  padding: 6px 8px 6px 16px;
+  margin: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  color: var(--gold);
+  display: block;
+  border: 2px solid var(--gold);
+  border-radius: 20px;
+  background: white;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Nunito';
+  margin-top: 16px;
 }
 
 .sidenav a:hover,
