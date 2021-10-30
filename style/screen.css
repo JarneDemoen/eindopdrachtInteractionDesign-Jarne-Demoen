@@ -174,7 +174,7 @@ a:focus {
   color: #77aeff;
 }
 
-.parkname{
+.parkname {
   color: var(--blue-accent-color);
   font-weight: bold;
   margin-left: 8px;
@@ -186,7 +186,7 @@ a:focus {
   display: none;
 }
 
-.menu__symbol{
+.menu__symbol {
   display: block;
 }
 
@@ -207,11 +207,14 @@ a:focus {
   display: flex;
   background-color: var(--blue-accent-color);
   align-items: center;
+  justify-content: center;
+  grid-area: logo;
 }
 
 .logo__symbol {
-  display: flex;
-  height: 50px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
   fill: white;
   background-color: var(--blue-accent-color);
 }
@@ -233,20 +236,11 @@ a:focus {
   margin-left: 220px;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: 220px auto;
-  grid-template-rows: auto;
-  grid-template-areas:
-    'logo header'
-    'main main';
-}
 
-.position-fixed{
-  position: -webkit-sticky; 
-	position: sticky;
-	top: 0;
-  grid-area: menu;
+.position-fixed {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -254,11 +248,10 @@ a:focus {
   z-index: 1000;
 }
 
-.position-fixed-title{
-  position: -webkit-sticky; 
-	position: sticky;
-	top: 0;
-  grid-area: header;
+.position-fixed-title {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -279,7 +272,6 @@ a:focus {
 
 .sidenav {
   display: block;
-  grid-area: sidebar;
   height: 100%;
   width: 220px;
   position: fixed;
