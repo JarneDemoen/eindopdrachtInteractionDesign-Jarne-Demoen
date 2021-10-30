@@ -15,6 +15,13 @@ let logo;
 let content;
 let toggle_nav = true;
 
+function longNameChecker(name){
+    if (name.length >= 25){
+        return 'longname'
+    }
+    return 'normalname'
+}
+
 function closeNav(){
         if (sidebar.style.display == 'block') {
             content.style.opacity = '100%'
@@ -81,13 +88,16 @@ function fillContentPage(jsonObject,pretparkname){
     if (jsonObject.lands.length == 0){
         console.log('Er zijn geen gebieden')
         for (let attractie of jsonObject.rides){
-            let imgSource = `/img/${pretparkname}/${modifyName(attractie.name)}.jpg`
+            if (attractie.name == 'Cécémel Ice Rink'){
+                attractie.name = 'Cecemel Ice Rink'
+            }
+            let imgSource = `/img/${modifyName(pretparkname)}/${modifyName(attractie.name)}.jpg`
             contentString += `<div class="ride">
             <div class="rideimage">
                 <img src=${imgSource} alt="">
             </div>
             <div class="rideinfo">
-                <p class="ridename">${attractie.name}</p>`
+                <p class="ridename ${longNameChecker(attractie.name)}">${attractie.name}</p>`
                 if (attractie.is_open == true){
                     contentString+= `<p class="ridestatus">Open</p>`
                 }
