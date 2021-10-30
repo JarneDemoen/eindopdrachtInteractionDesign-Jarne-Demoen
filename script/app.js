@@ -3,6 +3,7 @@
 
 var dropdown = document.getElementsByClassName("dropdown-Country");
 var i;
+var mediaQuery = window.matchMedia("(max-width: 570px)")
 let myCountries = ['Belgium', 'France', 'Netherlands', 'Germany'];
 let menubtn;
 let sidebar;
@@ -12,6 +13,7 @@ let sidebarcontent;
 let sidebarbg;
 let logo;
 let content;
+let toggle_nav = true;
 
 function closeNav(){
         if (sidebar.style.display == 'block') {
@@ -22,6 +24,8 @@ function closeNav(){
             setTimeout(displayNone,300)
             sidebarcontent.style.animation = 'slideout 0.3s'
             sidebarbg.style.animation = 'slideout 0.3s'
+            console.log('Klapt dicht')
+            toggle_nav = false
             
         } else {
             sidebar.style.display = 'block'
@@ -32,13 +36,17 @@ function closeNav(){
             setTimeout(displayNone1,300)
             sidebarcontent.style.animation = 'slidein 0.3s'
             sidebarbg.style.animation = 'slidein 0.3s'
+            console.log('Klapt open')
+            toggle_nav = true
         }
 }
 
 function ListenToClickTapContent(tabplace){
     tabplace.addEventListener('click',function(){
-        console.log('Navigatie zal moeten sluiten')
-        closeNav();
+        if (mediaQuery.matches && toggle_nav){
+            console.log('Navigatie zal moeten sluiten')
+            closeNav();
+        }
     })
 }
 
