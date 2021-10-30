@@ -242,6 +242,30 @@ a:focus {
     'main main';
 }
 
+.position-fixed{
+  position: -webkit-sticky; 
+	position: sticky;
+	top: 0;
+  grid-area: menu;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: var(--blue-accent-color);
+  z-index: 1000;
+}
+
+.position-fixed-title{
+  position: -webkit-sticky; 
+	position: sticky;
+	top: 0;
+  grid-area: header;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  background-color: var(--blue-accent-color);
+  z-index: 1000;
+}
+
 /* Sidebar css */
 .bg-sidenav {
   height: 100%;
