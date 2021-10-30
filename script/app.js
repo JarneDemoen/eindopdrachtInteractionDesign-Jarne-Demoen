@@ -33,7 +33,7 @@ function fillContentPage(jsonObject,pretparkname){
     if (jsonObject.lands.length == 0){
         console.log('Er zijn geen gebieden')
         for (let attractie of jsonObject.rides){
-            let imgSource = `/img/${pretparkname}/${modifyName(attractie.name)}.JPG`
+            let imgSource = `/img/${pretparkname}/${modifyName(attractie.name)}.jpg`
             console.log('imgString: ',imgSource)
             contentString += `<div class="ride">
             <div class="rideimage">
@@ -83,11 +83,15 @@ function fillContentPage(jsonObject,pretparkname){
 }
 
 let getDataAttracties = async (pretparkId,pretparkname) => {
-    // const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks/${pretparkId}/queue_times.json`;
-    const ENDPOINT = `https://queue-times.com/nl/parks/${pretparkId}/queue_times.json`;
+    const ENDPOINT = `https://cors.guillaume.cloud/https://queue-times.com/nl/parks/${pretparkId}/queue_times.json`;
+    // const ENDPOINT = `https://queue-times.com/nl/parks/${pretparkId}/queue_times.json`;
 
     // Met de fetch API proberen we de data op te halen.
-    const request = await fetch(`${ENDPOINT}`, {dataType: 'jsonp'});
+    const request = await fetch(`${ENDPOINT}`,
+    {headers: {
+        'origin': '*'},
+    dataType: 'jsonp',
+    });
     const data = await request.json();
     console.log('Data: ',data)
     fillContentPage(data,pretparkname);
@@ -220,12 +224,16 @@ function filterDataEurope(jsonObject) {
 }
 
 let getDataPretparken = async () => { 
-    // const ENDPOINT = `https://cors-anywhere.herokuapp.com/https://queue-times.com/nl/parks.json`;
-    const ENDPOINT = `https://queue-times.com/nl/parks.json`;
-
+    const ENDPOINT = `https://cors.guillaume.cloud/https://queue-times.com/nl/parks.json`;
+    // const ENDPOINT = `https://queue-times.com/nl/parks.json`;
     // Met de fetch API proberen we de data op te halen.
-    const request = await fetch(`${ENDPOINT}`, {dataType: 'jsonp'});
+    const request = await fetch(`${ENDPOINT}`,
+    {headers: {
+        'origin': '*'},
+    dataType: 'jsonp',
+    });
     const data = await request.json();
+    console.log('Ophalen gelukt')
     filterDataEurope(data)
 }
 
