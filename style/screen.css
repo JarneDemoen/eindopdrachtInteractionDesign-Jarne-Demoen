@@ -209,14 +209,19 @@ a:focus {
   align-items: center;
   justify-content: center;
   grid-area: logo;
+  width: 100px;
 }
 
 .logo__symbol {
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 36px;
+  height: 36px;
   fill: white;
   background-color: var(--blue-accent-color);
+}
+
+.header-flex{
+  display: flex;
 }
 
 .title {
@@ -257,6 +262,7 @@ a:focus {
   justify-content: center;
   background-color: var(--blue-accent-color);
   z-index: 1000;
+  width: 100%;
 }
 
 /* Sidebar css */
