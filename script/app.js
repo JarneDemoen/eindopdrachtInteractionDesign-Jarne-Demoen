@@ -14,80 +14,93 @@ let sidebarbg;
 let logo;
 let content;
 let toggle_nav = true;
+let liked = false;
 
 
-function ListenToLike(){
+function ListenToLike() {
     console.log('ListenToLike')
     const likebuttons = document.querySelectorAll('.like__symbol')
-    for (let likebtn of likebuttons){
-        likebtn.addEventListener('click',function(){
-            console.log('Geliket!')
-            likebtn.innerHTML = `<g>
+    for (let likebtn of likebuttons) {
+        likebtn.addEventListener('click', function () {
+            if (liked) {
+                console.log('UnLike!')
+                likebtn.innerHTML = `<g>
+            <path d="M488.6,233.33c-1.41,8-2.4,16-4.31,23.91-5.05,20.77-15.19,39.13-27.85,56.13-19.54,26.23-43.3,48.4-67.82,69.77q-43.37,37.8-87,75.26c-11.15,9.61-23.14,10-33.89.69-37.79-32.83-75.68-65.57-113-98.92-19.2-17.14-36.44-36.25-50.5-58-25.2-39-32-80.79-16.06-124.72,14.44-39.72,42.47-65.71,84.57-73.84,43.63-8.44,78.77,7.22,106.68,40.89,1.35,1.64,2.62,3.36,3.94,5a8.31,8.31,0,0,0,1.05.88c1.51-1.94,3-3.9,4.55-5.8,16.17-19.84,35.9-34.37,61.13-40.36,44-10.43,90.69,8,116.09,45.4,12.54,18.48,19.49,38.89,21.73,61,.15,1.43.48,2.84.72,4.26ZM284.16,441.69c1.94-1.64,3.66-3.09,5.36-4.55q24.53-21.09,49.05-42.2c27.42-23.65,55.23-46.89,79.95-73.49,14.36-15.47,27.6-31.85,36-51.45,15.91-37.06,14-73.17-8.44-107-28.29-42.63-93.13-53.75-132.75-9.72-5.67,6.3-10.5,13.39-15.49,20.27-2.66,3.68-5.54,6.79-10.13,7.84-7,1.59-12.69-.92-17.14-7.93a131.12,131.12,0,0,0-23.56-28c-34.93-31.11-89.08-25.14-117.8,8.86-29,34.38-32.56,73.48-15.82,114.59,8.2,20.13,21.4,37.25,36.62,52.42,19.41,19.35,39.49,38.07,59.93,56.32C234.19,399.31,259.12,420.15,284.16,441.69Z" transform="translate(-79.55 -101.35)"/>
+            <path fill="white" d="M284.16,441.69c-25-21.54-50-42.38-74.2-64-20.44-18.25-40.52-37-59.93-56.32-15.22-15.17-28.42-32.29-36.62-52.42-16.74-41.11-13.22-80.21,15.82-114.59,28.72-34,82.87-40,117.8-8.86a131.12,131.12,0,0,1,23.56,28c4.45,7,10.19,9.52,17.14,7.93,4.59-1.05,7.47-4.16,10.13-7.84,5-6.88,9.82-14,15.49-20.27,39.62-44,104.46-32.91,132.75,9.72,22.43,33.79,24.35,69.9,8.44,107-8.42,19.6-21.66,36-36,51.45-24.72,26.6-52.53,49.84-79.95,73.49q-24.49,21.13-49.05,42.2C287.82,438.6,286.1,440.05,284.16,441.69Z" transform="translate(-79.55 -101.35)"/>
+        </g>`
+        liked = false;
+        return
+            }
+            if (! liked) {
+                console.log('Like!')
+                likebtn.innerHTML = `<g>
             <path fill="red" d="M488.6,233.33c-1.41,8-2.4,16-4.31,23.91-5.05,20.77-15.19,39.13-27.85,56.13-19.54,26.23-43.3,48.4-67.82,69.77q-43.37,37.8-87,75.26c-11.15,9.61-23.14,10-33.89.69-37.79-32.83-75.68-65.57-113-98.92-19.2-17.14-36.44-36.25-50.5-58-25.2-39-32-80.79-16.06-124.72,14.44-39.72,42.47-65.71,84.57-73.84,43.63-8.44,78.77,7.22,106.68,40.89,1.35,1.64,2.62,3.36,3.94,5a8.31,8.31,0,0,0,1.05.88c1.51-1.94,3-3.9,4.55-5.8,16.17-19.84,35.9-34.37,61.13-40.36,44-10.43,90.69,8,116.09,45.4,12.54,18.48,19.49,38.89,21.73,61,.15,1.43.48,2.84.72,4.26ZM284.16,441.69c1.94-1.64,3.66-3.09,5.36-4.55q24.53-21.09,49.05-42.2c27.42-23.65,55.23-46.89,79.95-73.49,14.36-15.47,27.6-31.85,36-51.45,15.91-37.06,14-73.17-8.44-107-28.29-42.63-93.13-53.75-132.75-9.72-5.67,6.3-10.5,13.39-15.49,20.27-2.66,3.68-5.54,6.79-10.13,7.84-7,1.59-12.69-.92-17.14-7.93a131.12,131.12,0,0,0-23.56-28c-34.93-31.11-89.08-25.14-117.8,8.86-29,34.38-32.56,73.48-15.82,114.59,8.2,20.13,21.4,37.25,36.62,52.42,19.41,19.35,39.49,38.07,59.93,56.32C234.19,399.31,259.12,420.15,284.16,441.69Z" transform="translate(-79.55 -101.35)"/>
             <path fill="red" d="M284.16,441.69c-25-21.54-50-42.38-74.2-64-20.44-18.25-40.52-37-59.93-56.32-15.22-15.17-28.42-32.29-36.62-52.42-16.74-41.11-13.22-80.21,15.82-114.59,28.72-34,82.87-40,117.8-8.86a131.12,131.12,0,0,1,23.56,28c4.45,7,10.19,9.52,17.14,7.93,4.59-1.05,7.47-4.16,10.13-7.84,5-6.88,9.82-14,15.49-20.27,39.62-44,104.46-32.91,132.75,9.72,22.43,33.79,24.35,69.9,8.44,107-8.42,19.6-21.66,36-36,51.45-24.72,26.6-52.53,49.84-79.95,73.49q-24.49,21.13-49.05,42.2C287.82,438.6,286.1,440.05,284.16,441.69Z" transform="translate(-79.55 -101.35)"/>
         </g>`
+                liked = true;
+            }
         })
     }
 }
 
-function longNameChecker(name){
-    if (name.length >= 25){
+function longNameChecker(name) {
+    if (name.length >= 25) {
         return 'longname'
     }
     return 'normalname'
 }
 
-function closeNav(){
-        if (sidebar.style.display == 'block') {
-            content.style.opacity = '100%'
-            menubtn.style.animation = 'fadein 0.3s'
-            cancelMenu.style.animation = 'fadeout 0.3s'
-            menubtn.style.display = 'block'
-            setTimeout(displayNone,300)
-            sidebarcontent.style.animation = 'slideout 0.3s'
-            sidebarbg.style.animation = 'slideout 0.3s'
-            console.log('Klapt dicht')
-            toggle_nav = false
-            
-        } else {
-            sidebar.style.display = 'block'
-            content.style.opacity = '30%'
-            menubtn.style.animation = 'fadeout 0.3s'
-            cancelMenu.style.animation = 'fadein 0.3s'
-            cancelMenu.style.display = 'block'
-            setTimeout(displayNone1,300)
-            sidebarcontent.style.animation = 'slidein 0.3s'
-            sidebarbg.style.animation = 'slidein 0.3s'
-            console.log('Klapt open')
-            toggle_nav = true
-        }
+function closeNav() {
+    if (sidebar.style.display == 'block') {
+        content.style.opacity = '100%'
+        menubtn.style.animation = 'fadein 0.3s'
+        cancelMenu.style.animation = 'fadeout 0.3s'
+        menubtn.style.display = 'block'
+        setTimeout(displayNone, 300)
+        sidebarcontent.style.animation = 'slideout 0.3s'
+        sidebarbg.style.animation = 'slideout 0.3s'
+        console.log('Klapt dicht')
+        toggle_nav = false
+
+    } else {
+        sidebar.style.display = 'block'
+        content.style.opacity = '30%'
+        menubtn.style.animation = 'fadeout 0.3s'
+        cancelMenu.style.animation = 'fadein 0.3s'
+        cancelMenu.style.display = 'block'
+        setTimeout(displayNone1, 300)
+        sidebarcontent.style.animation = 'slidein 0.3s'
+        sidebarbg.style.animation = 'slidein 0.3s'
+        console.log('Klapt open')
+        toggle_nav = true
+    }
 }
 
-function ListenToClickTapContent(tabplace){
-    tabplace.addEventListener('click',function(){
-        if (mediaQuery.matches && toggle_nav){
+function ListenToClickTapContent(tabplace) {
+    tabplace.addEventListener('click', function () {
+        if (mediaQuery.matches && toggle_nav) {
             console.log('Navigatie zal moeten sluiten')
             closeNav();
         }
     })
 }
 
-function color_wait_time(wait_time){
-    if (wait_time <= 15){
+function color_wait_time(wait_time) {
+    if (wait_time <= 15) {
         return 'short'
     }
-    if (wait_time > 15 && wait_time<=45){
+    if (wait_time > 15 && wait_time <= 45) {
         return 'normal'
     }
-    if (wait_time > 45){
+    if (wait_time > 45) {
         return 'long'
     }
 }
 
-function modifyName(name){
+function modifyName(name) {
     let new_name = "";
-    for (let char of name){
-        if (char == ' '){
+    for (let char of name) {
+        if (char == ' ') {
             char = '_'
         }
         new_name += char
@@ -95,31 +108,37 @@ function modifyName(name){
     return new_name
 }
 
-function fillContentPage(jsonObject,pretparkname){
+function fillContentPage(jsonObject, pretparkname) {
     let contentString = `<h1 class="parkname">${pretparkname}</h1>`;
-    if (jsonObject.rides.length == 0){
+    if (jsonObject.rides.length == 0) {
         console.log('Er zijn geen rides')
     }
-    if (jsonObject.lands.length == 0){
+    if (jsonObject.lands.length == 0) {
         console.log('Er zijn geen gebieden')
-        for (let attractie of jsonObject.rides){
-            if (attractie.name == 'Cécémel Ice Rink'){
+        for (let attractie of jsonObject.rides) {
+            if (attractie.name == 'Cécémel Ice Rink') {
                 attractie.name = 'Cecemel Ice Rink'
             }
-            let imgSource = `/img/${modifyName(pretparkname)}/${modifyName(attractie.name)}.jpg`
+            let imgSource = `/img/${
+                modifyName(pretparkname)
+            }/${
+                modifyName(attractie.name)
+            }.jpg`
             contentString += `<div class="ride">
             <div class="rideimage">
                 <img src=${imgSource} alt="">
             </div>
             <div class="rideinfo">
-                <p class="ridename ${longNameChecker(attractie.name)}">${attractie.name}</p>`
-                if (attractie.is_open == true){
-                    contentString+= `<p class="ridestatus">Open</p>`
-                }
-                else{
-                    contentString+= `<p class="ridestatus">Closed</p>`
-                }
-                contentString+= `
+                <p class="ridename ${
+                longNameChecker(attractie.name)
+            }">${
+                attractie.name
+            }</p>`
+            if (attractie.is_open == true) {
+                contentString += `<p class="ridestatus">Open</p>`
+            } else {
+                contentString += `<p class="ridestatus">Closed</p>`
+            } contentString += `
                 <div class="ridewait">
                     <span class="icon">
                         <svg class="time-svg" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 408.76 409.6">
@@ -129,7 +148,11 @@ function fillContentPage(jsonObject,pretparkname){
                             </g>
                         </svg>
                     </span>
-                    <span class="icontext ${color_wait_time(attractie.wait_time)}">${attractie.wait_time} min</span>
+                    <span class="icontext ${
+                color_wait_time(attractie.wait_time)
+            }">${
+                attractie.wait_time
+            } min</span>
                 </div>
                 <div class="like">
                             <svg class="like__symbol" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 409.05 364.51">
@@ -148,47 +171,48 @@ function fillContentPage(jsonObject,pretparkname){
     ListenToLike();
 }
 
-let getDataAttracties = async (pretparkId,pretparkname) => {
+let getDataAttracties = async (pretparkId, pretparkname) => {
     const ENDPOINT = `https://cors.guillaume.cloud/https://queue-times.com/nl/parks/${pretparkId}/queue_times.json`;
     // const ENDPOINT = `https://queue-times.com/nl/parks/${pretparkId}/queue_times.json`;
 
     // Met de fetch API proberen we de data op te halen.
-    const request = await fetch(`${ENDPOINT}`,
-    {headers: {
-        'origin': '*'},
-    dataType: 'jsonp',
+    const request = await fetch(`${ENDPOINT}`, {
+        headers: {
+            'origin': '*'
+        },
+        dataType: 'jsonp'
     });
     const data = await request.json();
-    console.log('Data: ',data)
-    fillContentPage(data,pretparkname);
+    console.log('Data: ', data)
+    fillContentPage(data, pretparkname);
 }
 
-function ListenToClickPretpark(){
+function ListenToClickPretpark() {
     const pretparken = document.querySelectorAll('.c-park')
-    for(let pretparkbtn of pretparken){
-        pretparkbtn.addEventListener('click',function(){
+    for (let pretparkbtn of pretparken) {
+        pretparkbtn.addEventListener('click', function () {
             let pretparkId = pretparkbtn.getAttribute('parkid')
             let pretparkname = pretparkbtn.innerHTML;
-            console.log('Gekozen pretpark is: ',pretparkId)
-            getDataAttracties(pretparkId,pretparkname)
+            console.log('Gekozen pretpark is: ', pretparkId)
+            getDataAttracties(pretparkId, pretparkname)
         })
     }
 }
 
-function displayNone(){
+function displayNone() {
     cancelMenu.style.display = 'none'
     sidebar.style.display = 'none'
 }
 
-function displayNone1(){
+function displayNone1() {
     menubtn.style.display = 'none'
 }
 
 function ListenToClickMenu(btn) {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function () {
         closeNav();
     })
-    if(btn == cancelMenu){
+    if (btn == cancelMenu) {
         ListenToClickTapContent(content)
     }
 }
@@ -219,7 +243,7 @@ function dropdownContent() {
         ListenToClickMenu(menubtn);
     }
 
-    if(cancelMenu){
+    if (cancelMenu) {
         ListenToClickMenu(cancelMenu);
     }
     ListenToClickPretpark();
@@ -246,7 +270,9 @@ function fillData(data) {
         for (let j = 0; j < data.length; j++) {
             let parkobj = data[j]
             if (parkobj.country == country) {
-                sidenavcountrystring += `<a class="c-park" parkid=${parkobj.id} href="#">${
+                sidenavcountrystring += `<a class="c-park" parkid=${
+                    parkobj.id
+                } href="#">${
                     parkobj.name
                 }</a>`
             }
@@ -274,14 +300,15 @@ function filterDataEurope(jsonObject) {
     fillData(filteredDataArray);
 }
 
-let getDataPretparken = async () => { 
+let getDataPretparken = async () => {
     const ENDPOINT = `https://cors.guillaume.cloud/https://queue-times.com/nl/parks.json`;
     // const ENDPOINT = `https://queue-times.com/nl/parks.json`;
     // Met de fetch API proberen we de data op te halen.
-    const request = await fetch(`${ENDPOINT}`,
-    {headers: {
-        'origin': '*'},
-    dataType: 'jsonp',
+    const request = await fetch(`${ENDPOINT}`, {
+        headers: {
+            'origin': '*'
+        },
+        dataType: 'jsonp'
     });
     const data = await request.json();
     console.log('Ophalen gelukt')
