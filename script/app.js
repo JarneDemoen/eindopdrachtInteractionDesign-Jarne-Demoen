@@ -13,6 +13,35 @@ let sidebarbg;
 let logo;
 let content;
 
+function closeNav(){
+        if (sidebar.style.display == 'block') {
+            content.style.opacity = '100%'
+            menubtn.style.animation = 'fadein 0.3s'
+            cancelMenu.style.animation = 'fadeout 0.3s'
+            menubtn.style.display = 'block'
+            setTimeout(displayNone,300)
+            sidebarcontent.style.animation = 'slideout 0.3s'
+            sidebarbg.style.animation = 'slideout 0.3s'
+            
+        } else {
+            sidebar.style.display = 'block'
+            content.style.opacity = '30%'
+            menubtn.style.animation = 'fadeout 0.3s'
+            cancelMenu.style.animation = 'fadein 0.3s'
+            cancelMenu.style.display = 'block'
+            setTimeout(displayNone1,300)
+            sidebarcontent.style.animation = 'slidein 0.3s'
+            sidebarbg.style.animation = 'slidein 0.3s'
+        }
+}
+
+function ListenToClickTapContent(tabplace){
+    tabplace.addEventListener('click',function(){
+        console.log('Navigatie zal moeten sluiten')
+        closeNav();
+    })
+}
+
 function color_wait_time(wait_time){
     if (wait_time <= 15){
         return 'short'
@@ -37,7 +66,6 @@ function modifyName(name){
 }
 
 function fillContentPage(jsonObject,pretparkname){
-    content = document.querySelector('.content')
     let contentString = `<h1 class="parkname">${pretparkname}</h1>`;
     if (jsonObject.rides.length == 0){
         console.log('Er zijn geen rides')
@@ -46,7 +74,6 @@ function fillContentPage(jsonObject,pretparkname){
         console.log('Er zijn geen gebieden')
         for (let attractie of jsonObject.rides){
             let imgSource = `/img/${pretparkname}/${modifyName(attractie.name)}.jpg`
-            console.log('imgString: ',imgSource)
             contentString += `<div class="ride">
             <div class="rideimage">
                 <img src=${imgSource} alt="">
@@ -131,28 +158,12 @@ function displayNone1(){
 }
 
 function ListenToClickMenu(btn) {
-    btn.addEventListener('click', function () {
-        maincontent = document.querySelector('.content')
-        if (sidebar.style.display == 'block') {
-            maincontent.style.opacity = '100%'
-            menubtn.style.animation = 'fadein 0.3s'
-            cancelMenu.style.animation = 'fadeout 0.3s'
-            menubtn.style.display = 'block'
-            setTimeout(displayNone,300)
-            sidebarcontent.style.animation = 'slideout 0.3s'
-            sidebarbg.style.animation = 'slideout 0.3s'
-            
-        } else {
-            sidebar.style.display = 'block'
-            maincontent.style.opacity = '30%'
-            menubtn.style.animation = 'fadeout 0.3s'
-            cancelMenu.style.animation = 'fadein 0.3s'
-            cancelMenu.style.display = 'block'
-            setTimeout(displayNone1,300)
-            sidebarcontent.style.animation = 'slidein 0.3s'
-            sidebarbg.style.animation = 'slidein 0.3s'
-        }
+    btn.addEventListener('click', function() {
+        closeNav();
     })
+    if(btn == cancelMenu){
+        ListenToClickTapContent(content)
+    }
 }
 
 function dropdownContent() {
@@ -175,6 +186,7 @@ function dropdownContent() {
     sidebarcontent = document.querySelector('.sidenav')
     sidebarbg = document.querySelector('.bg-sidenav')
     menubtn = document.querySelector('.menu__symbol')
+    content = document.querySelector('.content')
 
     if (menubtn) {
         ListenToClickMenu(menubtn);
