@@ -15,6 +15,17 @@ let logo;
 let content;
 let toggle_nav = true;
 
+function ListenToLike(){
+    console.log('ListenToLike')
+    const likebuttons = document.querySelectorAll('.like__symbol')
+    for (let likebtn of likebuttons){
+        likebtn.addEventListener('click',function(){
+            console.log('Geliket!')
+            likebtn.style.fill = 'red';
+        })
+    }
+}
+
 function longNameChecker(name){
     if (name.length >= 25){
         return 'longname'
@@ -137,6 +148,7 @@ function fillContentPage(jsonObject,pretparkname){
         }
         content.innerHTML = contentString
     }
+    ListenToLike();
 }
 
 let getDataAttracties = async (pretparkId,pretparkname) => {

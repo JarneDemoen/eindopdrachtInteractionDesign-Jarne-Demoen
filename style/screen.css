@@ -419,6 +419,7 @@ a:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .short{
