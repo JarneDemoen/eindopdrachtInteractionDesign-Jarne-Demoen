@@ -214,8 +214,7 @@ a:focus {
 
 .logo__symbol {
   position: absolute;
-  width: 36px;
-  height: 36px;
+  width: 48px;
   fill: white;
   background-color: var(--blue-accent-color);
 }
