@@ -13,6 +13,18 @@ let sidebarbg;
 let logo;
 let content;
 
+function color_wait_time(wait_time){
+    if (wait_time <= 15){
+        return 'short'
+    }
+    if (wait_time > 15 && wait_time<=45){
+        return 'normal'
+    }
+    if (wait_time > 45){
+        return 'long'
+    }
+}
+
 function modifyName(name){
     let new_name = "";
     for (let char of name){
@@ -57,7 +69,7 @@ function fillContentPage(jsonObject,pretparkname){
                             </g>
                         </svg>
                     </span>
-                    <span class="icontext">${attractie.wait_time} min</span>
+                    <span class="icontext ${color_wait_time(attractie.wait_time)}">${attractie.wait_time} min</span>
                 </div>
                 <div class="like">
                     <svg class="like__symbol" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 409.05 364.51">

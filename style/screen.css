@@ -421,6 +421,17 @@ a:focus {
   justify-content: center;
 }
 
+.short{
+  color: lawngreen;
+}
+
+.normal{
+  color: orange;
+}
+
+.long{
+  color: red;
+}
 /* Animations */
 @keyframes slidein {
   from {
