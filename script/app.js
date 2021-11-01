@@ -261,7 +261,7 @@ function fillContentPage(jsonObject, pretparkname) {
         }
         console.log('parkdata', parkdata)
         for (let attractie of parkdata) {
-            let imgSource = `/img/${
+            let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
                 modifyName(pretparkname)
             }/${
                 modifyName(attractie.name)
