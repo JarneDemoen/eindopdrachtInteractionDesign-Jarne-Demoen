@@ -18,10 +18,14 @@ let toggle_nav = true;
 let listRideID = [];
 let arrayLiked = [];
 let parkdata;
+let navcanopen = false;
 
 
 function fillContentWithFavorites() {
     let favoriteString = `<h1 class="parkname">Favorites</h1>`
+    if (arrayLiked.length == 0) {
+        favoriteString += '<div class="message">You have no favorite rides yet !</div>'
+    }
     for (let ride of arrayLiked) {
         console.log(ride)
         if (ride.name == 'Cécémel Ice Rink') {
@@ -192,16 +196,19 @@ function closeNav() {
         toggle_nav = false
 
     } else {
-        sidebar.style.display = 'block'
-        content.style.opacity = '30%'
-        menubtn.style.animation = 'fadeout 0.3s'
-        cancelMenu.style.animation = 'fadein 0.3s'
-        cancelMenu.style.display = 'block'
-        setTimeout(displayNone1, 300)
-        sidebarcontent.style.animation = 'slidein 0.3s'
-        sidebarbg.style.animation = 'slidein 0.3s'
-        console.log('Klapt open')
-        toggle_nav = true
+        if (navcanopen) {
+            sidebar.style.display = 'block'
+            content.style.opacity = '30%'
+            menubtn.style.animation = 'fadeout 0.3s'
+            cancelMenu.style.animation = 'fadein 0.3s'
+            cancelMenu.style.display = 'block'
+            setTimeout(displayNone1, 300)
+            sidebarcontent.style.animation = 'slidein 0.3s'
+            sidebarbg.style.animation = 'slidein 0.3s'
+            console.log('Klapt open')
+            toggle_nav = true
+        }
+
     }
 }
 
@@ -476,6 +483,7 @@ function displayNone1() {
 
 function ListenToClickMenu(btn) {
     btn.addEventListener('click', function () {
+        navcanopen = true;
         closeNav();
     })
     if (btn == cancelMenu) {
@@ -503,7 +511,6 @@ function dropdownContent() {
     sidebarcontent = document.querySelector('.sidenav')
     sidebarbg = document.querySelector('.bg-sidenav')
     menubtn = document.querySelector('.menu__symbol')
-    content = document.querySelector('.content')
     favoritebtn = document.querySelector('.favorites')
 
     if (menubtn) {
@@ -587,6 +594,8 @@ let getDataPretparken = async () => {
 function init() {
     console.log('DOM Geladen');
     getDataPretparken();
+    content = document.querySelector('.content')
+    getDataAttracties(276, 'Bellewaerde')
 }
 
 document.addEventListener('DOMContentLoaded', init);

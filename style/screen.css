@@ -31,6 +31,7 @@
   --header-font-size: 22px;
   --header-line-height: 70px;
   --gold: goldenrod;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -173,6 +174,14 @@ a:active {
 a:hover,
 a:focus {
   color: #77aeff;
+}
+
+.message{
+  font-size: 16px;
+  font-weight: 600;
+  padding-left: 8px;
+  padding-top: 16px;
+  color: var(--blue-accent-color);
 }
 
 .parkname {
