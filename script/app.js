@@ -177,7 +177,7 @@ function ListenToLike() {
 }
 
 function longNameChecker(name) {
-    if (name.length >= 25) {
+    if (name.length >= 20) {
         return 'longname'
     }
     return 'normalname'
@@ -467,6 +467,7 @@ function ListenToClickPretpark() {
             let pretparkId = pretparkbtn.getAttribute('parkid')
             let pretparkname = pretparkbtn.innerHTML;
             console.log('Gekozen pretpark is: ', pretparkId)
+            closeNav()
             getDataAttracties(pretparkId, pretparkname)
         })
     }
