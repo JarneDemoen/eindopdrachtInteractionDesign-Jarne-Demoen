@@ -95,6 +95,7 @@ function fillContentWithFavorites() {
 function ListenToClickFavorites() {
     favoritebtn.addEventListener('click', function () {
         console.log('Toon favorieten')
+        closeNav()
         fillContentWithFavorites()
     })
 }

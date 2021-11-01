@@ -286,6 +286,7 @@ a:focus {
 }
 
 .sidenav {
+  padding-bottom: 80px;
   display: block;
   height: 100%;
   width: 220px;
