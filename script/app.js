@@ -356,7 +356,7 @@ function fillContentPage(jsonObject, pretparkname) {
             if (attractie.name == 'Cécémel Ice Rink') {
                 attractie.name = 'Cecemel Ice Rink'
             }
-            let imgSource = `/img/${
+            let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
                 modifyName(pretparkname)
             }/${
                 modifyName(attractie.name)
