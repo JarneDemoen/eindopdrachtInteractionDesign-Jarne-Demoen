@@ -31,7 +31,10 @@ function fillContentWithFavorites() {
         if (ride.name == 'Cécémel Ice Rink') {
             ride.name = 'Cecemel Ice Rink'
         }
-        let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
+        if (ride.name == 'Mission Vulcania : Opération sauvetage') {
+            ride.name = 'Mission Vulcania'
+        }
+        let imgSource = `/img/${
             modifyName(ride.parkname)
         }/${
             modifyName(ride.name)
@@ -261,7 +264,19 @@ function fillContentPage(jsonObject, pretparkname) {
         }
         console.log('parkdata', parkdata)
         for (let attractie of parkdata) {
-            let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
+            if (attractie.name == 'Disney Princesses: A Royal Invitation'){
+                attractie.name = 'Disney Princesses'
+            }
+            if (attractie.name == 'Armageddon : les Effets Spéciaux'){
+                attractie.name = 'Armageddon'
+            }
+            if (attractie.name == 'Ratatouille: The Adventure'){
+                attractie.name = 'Ratatouille'
+            }
+            if (attractie.name == 'Ratatouille: The Adventure Single Rider'){
+                attractie.name = 'Ratatouille Single Rider'
+            }
+            let imgSource = `/img/${
                 modifyName(pretparkname)
             }/${
                 modifyName(attractie.name)
@@ -356,7 +371,10 @@ function fillContentPage(jsonObject, pretparkname) {
             if (attractie.name == 'Cécémel Ice Rink') {
                 attractie.name = 'Cecemel Ice Rink'
             }
-            let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
+            if (attractie.name == 'Mission Vulcania : Opération sauvetage') {
+                attractie.name = 'Mission Vulcania'
+            }
+            let imgSource = `/img/${
                 modifyName(pretparkname)
             }/${
                 modifyName(attractie.name)
