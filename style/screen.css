@@ -177,10 +177,10 @@ a:focus {
 }
 
 .message{
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   padding-left: 8px;
-  padding-top: 16px;
+  padding-top: 8px;
   color: var(--blue-accent-color);
 }
 
@@ -469,6 +469,10 @@ a:focus {
 
 .opacity0{
   opacity: 0;
+}
+
+.ridestatus{
+  color: rgba(61, 33, 33, 0.7);
 }
 
 /* Animations */
