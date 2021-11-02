@@ -34,7 +34,10 @@ function fillContentWithFavorites() {
         if (ride.name == 'Mission Vulcania : Opération sauvetage') {
             ride.name = 'Mission Vulcania'
         }
-        let imgSource = `/img/${
+        if (ride.name == 'Xpress: Platform 13') {
+            ride.name = 'Xpress'
+        }
+        let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
             modifyName(ride.parkname)
         }/${
             modifyName(ride.name)
@@ -276,7 +279,7 @@ function fillContentPage(jsonObject, pretparkname) {
             if (attractie.name == 'Ratatouille: The Adventure Single Rider'){
                 attractie.name = 'Ratatouille Single Rider'
             }
-            let imgSource = `/img/${
+            let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
                 modifyName(pretparkname)
             }/${
                 modifyName(attractie.name)
@@ -374,7 +377,10 @@ function fillContentPage(jsonObject, pretparkname) {
             if (attractie.name == 'Mission Vulcania : Opération sauvetage') {
                 attractie.name = 'Mission Vulcania'
             }
-            let imgSource = `/img/${
+            if (attractie.name == 'Xpress: Platform 13') {
+                attractie.name = 'Xpress'
+            }
+            let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
                 modifyName(pretparkname)
             }/${
                 modifyName(attractie.name)
