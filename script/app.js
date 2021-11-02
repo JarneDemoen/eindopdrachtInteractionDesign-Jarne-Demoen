@@ -37,7 +37,7 @@ function fillContentWithFavorites() {
         if (ride.name == 'Xpress: Platform 13') {
             ride.name = 'Xpress'
         }
-        let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
+        let imgSource = `/img/${
             modifyName(ride.parkname)
         }/${
             modifyName(ride.name)
@@ -263,7 +263,9 @@ function fillContentPage(jsonObject, pretparkname) {
             }
         }
         for (let ride of jsonObject.rides) {
-            parkdata.push(ride)
+            if(pretparkname != 'Heide Park '){
+                parkdata.push(ride)
+            }
         }
         console.log('parkdata', parkdata)
         for (let attractie of parkdata) {
@@ -279,7 +281,7 @@ function fillContentPage(jsonObject, pretparkname) {
             if (attractie.name == 'Ratatouille: The Adventure Single Rider'){
                 attractie.name = 'Ratatouille Single Rider'
             }
-            let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
+            let imgSource = `/img/${
                 modifyName(pretparkname)
             }/${
                 modifyName(attractie.name)
@@ -380,7 +382,7 @@ function fillContentPage(jsonObject, pretparkname) {
             if (attractie.name == 'Xpress: Platform 13') {
                 attractie.name = 'Xpress'
             }
-            let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
+            let imgSource = `/img/${
                 modifyName(pretparkname)
             }/${
                 modifyName(attractie.name)
