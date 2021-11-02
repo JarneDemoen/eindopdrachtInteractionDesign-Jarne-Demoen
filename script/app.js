@@ -263,23 +263,47 @@ function fillContentPage(jsonObject, pretparkname) {
             }
         }
         for (let ride of jsonObject.rides) {
-            if(pretparkname != 'Heide Park '){
+            if (pretparkname != 'Heide Park ') {
                 parkdata.push(ride)
             }
         }
         console.log('parkdata', parkdata)
         for (let attractie of parkdata) {
-            if (attractie.name == 'Disney Princesses: A Royal Invitation'){
+            if (attractie.name == 'Disney Princesses: A Royal Invitation') {
                 attractie.name = 'Disney Princesses'
             }
-            if (attractie.name == 'Armageddon : les Effets Spéciaux'){
+            if (attractie.name == 'Armageddon : les Effets Spéciaux') {
                 attractie.name = 'Armageddon'
             }
-            if (attractie.name == 'Ratatouille: The Adventure'){
+            if (attractie.name == 'Ratatouille: The Adventure') {
                 attractie.name = 'Ratatouille'
             }
-            if (attractie.name == 'Ratatouille: The Adventure Single Rider'){
+            if (attractie.name == 'Ratatouille: The Adventure Single Rider') {
                 attractie.name = 'Ratatouille Single Rider'
+            }
+            if (attractie.name == 'Alpine Coaster "Enzian"') {
+                attractie.name = 'Alpine Coaster'
+            }
+            if (attractie.name == 'VirtualLine: Eurosat - CanCan Coaster') {
+                attractie.name = 'VirtualLine - Eurosat - CanCan Coaster'
+            }
+            if (attractie.name == 'VirtualLine: blue fire Megacoaster powered by Nord Stream 2') {
+                attractie.name = 'VirtualLine - blue fire Megacoaster'
+            }
+            if (attractie.name == 'VirtualLine: WODAN - Timburcoaster') {
+                attractie.name = 'VirtualLine - WODAN - Timburcoaster'
+            }
+            if (attractie.name == 'VirtualLine: Arthur') {
+                attractie.name = 'VirtualLine - Arthur'
+            }
+            if (attractie.name == 'VirtualLine: Pirates in Batavia') {
+                attractie.name = 'VirtualLine - Pirates in Batavia'
+            }
+            if (attractie.name == 'VirtualLine: Pirates in Batavia') {
+                attractie.name = 'VirtualLine - Pirates in Batavia'
+            }
+            if (attractie.name == 'VirtualLine: Euro-Mir') {
+                attractie.name = 'VirtualLine - Euro-Mir'
             }
             let imgSource = `/img/${
                 modifyName(pretparkname)
