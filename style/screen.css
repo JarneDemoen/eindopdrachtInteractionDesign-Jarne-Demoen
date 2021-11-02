@@ -467,6 +467,10 @@ a:focus {
   font-size: 16px;
 }
 
+.opacity0{
+  opacity: 0;
+}
+
 /* Animations */
 @keyframes slidein {
   from {

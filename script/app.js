@@ -20,6 +20,14 @@ let arrayLiked = [];
 let parkdata;
 let navcanopen = false;
 
+function HideWaitTime(status){
+    if (status == false || status =='false'){
+        return 'opacity0'
+    }
+    else{
+        return ''
+    }
+}
 
 function fillContentWithFavorites() {
     let favoriteString = `<h1 class="parkname">Favorites</h1>`
@@ -52,12 +60,12 @@ function fillContentWithFavorites() {
         }">${
             ride.name
         }</p>`
-        if (ride.status == true) {
+        if (ride.status == 'true') {
             favoriteString += `<p class="ridestatus">Open</p>`
         } else {
             favoriteString += `<p class="ridestatus">Closed</p>`
         } favoriteString += `
-            <div class="ridewait">
+            <div class="ridewait ${HideWaitTime(ride.status)}">
                 <span class="icon">
                     <svg class="time-svg" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 408.76 409.6">
                         <g>
@@ -160,7 +168,7 @@ function ListenToLike() {
                 let parkname = parent.getAttribute('pretparkname')
                 let status = parent.getAttribute('ridestatus')
                 let wait = parent.getAttribute('wait')
-                let id = parent.getAttribute('id')
+                let id =parent.getAttribute('id')
                 console.log(name, parkname, status, wait, id)
                 let addArray = {
                     'name': name,
@@ -328,7 +336,7 @@ function fillContentPage(jsonObject, pretparkname) {
             } else {
                 contentString += `<p class="ridestatus">Closed</p>`
             } contentString += `
-                <div class="ridewait">
+                <div class="ridewait ${HideWaitTime(attractie.is_open)}">
                     <span class="icon">
                         <svg class="time-svg" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 408.76 409.6">
                             <g>
@@ -429,7 +437,7 @@ function fillContentPage(jsonObject, pretparkname) {
             } else {
                 contentString += `<p class="ridestatus">Closed</p>`
             } contentString += `
-                <div class="ridewait">
+                <div class="ridewait ${HideWaitTime(attractie.is_open)}">
                     <span class="icon">
                         <svg class="time-svg" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 408.76 409.6">
                             <g>
