@@ -45,7 +45,7 @@ function fillContentWithFavorites() {
         if (ride.name == 'Xpress: Platform 13') {
             ride.name = 'Xpress'
         }
-        let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
+        let imgSource = `/img/${
             modifyName(ride.parkname)
         }/${
             modifyName(ride.name)
@@ -316,7 +316,7 @@ function fillContentPage(jsonObject, pretparkname) {
             if (attractie.name == 'VirtualLine: Euro-Mir') {
                 attractie.name = 'VirtualLine - Euro-Mir'
             }
-            let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
+            let imgSource = `/img/${
                 modifyName(pretparkname)
             }/${
                 modifyName(attractie.name)
@@ -417,7 +417,7 @@ function fillContentPage(jsonObject, pretparkname) {
             if (attractie.name == 'Xpress: Platform 13') {
                 attractie.name = 'Xpress'
             }
-            let imgSource = `/eindopdrachtInteractionDesign-Jarne-Demoen/img/${
+            let imgSource = `/img/${
                 modifyName(pretparkname)
             }/${
                 modifyName(attractie.name)
