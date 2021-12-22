@@ -445,7 +445,8 @@ a:focus {
 }
 
 .like {
-  display: flex;
+  display: grid;
+  grid-area: like;
   align-items: center;
   justify-content: center;
   cursor: pointer;
