@@ -20,11 +20,10 @@ let arrayLiked = [];
 let parkdata;
 let navcanopen = false;
 
-function HideWaitTime(status){
-    if (status == false || status =='false'){
+function HideWaitTime(status) {
+    if (status == false || status == 'false') {
         return 'opacity0'
-    }
-    else{
+    } else {
         return ''
     }
 }
@@ -36,6 +35,9 @@ function fillContentWithFavorites() {
     }
     for (let ride of arrayLiked) {
         console.log(ride)
+        if (ride.name == 'Mr. Frog') {
+            ride.name = 'Mr Frog'
+        }
         if (ride.name == 'Cécémel Ice Rink') {
             ride.name = 'Cecemel Ice Rink'
         }
@@ -65,7 +67,9 @@ function fillContentWithFavorites() {
         } else {
             favoriteString += `<p class="ridestatus">Closed</p>`
         } favoriteString += `
-            <div class="ridewait ${HideWaitTime(ride.status)}">
+            <div class="ridewait ${
+            HideWaitTime(ride.status)
+        }">
                 <span class="icon">
                     <svg class="time-svg" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 408.76 409.6">
                         <g>
@@ -168,7 +172,7 @@ function ListenToLike() {
                 let parkname = parent.getAttribute('pretparkname')
                 let status = parent.getAttribute('ridestatus')
                 let wait = parent.getAttribute('wait')
-                let id =parent.getAttribute('id')
+                let id = parent.getAttribute('id')
                 console.log(name, parkname, status, wait, id)
                 let addArray = {
                     'name': name,
@@ -336,7 +340,9 @@ function fillContentPage(jsonObject, pretparkname) {
             } else {
                 contentString += `<p class="ridestatus">Closed</p>`
             } contentString += `
-                <div class="ridewait ${HideWaitTime(attractie.is_open)}">
+                <div class="ridewait ${
+                HideWaitTime(attractie.is_open)
+            }">
                     <span class="icon">
                         <svg class="time-svg" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 408.76 409.6">
                             <g>
@@ -408,6 +414,9 @@ function fillContentPage(jsonObject, pretparkname) {
     if (jsonObject.lands.length == 0) {
         console.log('Er zijn geen gebieden')
         for (let attractie of jsonObject.rides) {
+            if (attractie.name == 'Mr. Frog') {
+                attractie.name = 'Mr Frog'
+            }
             if (attractie.name == 'Cécémel Ice Rink') {
                 attractie.name = 'Cecemel Ice Rink'
             }
@@ -437,7 +446,9 @@ function fillContentPage(jsonObject, pretparkname) {
             } else {
                 contentString += `<p class="ridestatus">Closed</p>`
             } contentString += `
-                <div class="ridewait ${HideWaitTime(attractie.is_open)}">
+                <div class="ridewait ${
+                HideWaitTime(attractie.is_open)
+            }">
                     <span class="icon">
                         <svg class="time-svg" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 408.76 409.6">
                             <g>
