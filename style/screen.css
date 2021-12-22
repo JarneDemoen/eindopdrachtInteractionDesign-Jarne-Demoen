@@ -414,6 +414,7 @@ a:focus {
 
 .ridestatus {
   grid-area: status;
+  color: rgba(61, 33, 33, 0.7);
 }
 
 .ridewait {
@@ -468,10 +469,6 @@ a:focus {
 
 .opacity0 {
   opacity: 0;
-}
-
-.ridestatus {
-  color: rgba(61, 33, 33, 0.7);
 }
 
 /* Animations */ /* Heb hier transform translatex geprobeerd maar dat bracht niet het gewenste resultaat*/
